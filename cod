@@ -1,0 +1,30 @@
+def binary_search(arr, x):
+    l = 0
+    r = len(arr) - 1
+    while l <= r:
+        mid = l + (r - l) // 2
+        if int(arr[mid]) == x:
+            return mid
+        elif int(arr[mid]) < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return l
+
+def sort_and_search():
+    # получаем последовательность чисел через пробел
+    sequence = input("Введите последовательность чисел через пробел: ")
+    # получаем число от пользователя
+    number = int(input("Введите любое число: "))
+    # преобразуем последовательность в список
+    sequence_list = sequence.split()
+    # преобразуем все элементы списка в числа
+    sequence_list = [int(i) for i in sequence_list]
+    # сортируем список по возрастанию элементов в нем
+    sequence_list.sort()
+    # устанавливаем номер позиции элемента, который меньше введенного пользователем числа,
+    # а следующий за ним больше или равен этому числу.
+    position = binary_search(sequence_list, number)
+    print(f"Позиция элемента: {position}")
+
+sort_and_search()
